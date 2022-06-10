@@ -18,22 +18,84 @@ public class ItemManager : MonoBehaviour
         instance = this;
     }
 
-    [SerializeField] bool isKey;    //열쇠를 먹었는가
-    [SerializeField] bool isSeed;   //씨앗을 먹었는가
-    [SerializeField] bool isLadder; //사다리
-    [SerializeField] bool isWoodPlank; //나무판자를 잡았는가
-    [SerializeField] bool isDoor;    //문을 열었는가
-   
-    
+    public bool isKey;    //열쇠를 먹었는가
+    public bool isSeed;   //씨앗을 먹었는가
+    public bool isLadder; //사다리
+    public bool isWoodPlank; //나무판자를 잡았는가
+    public bool isDoor;    //문을 열었는가
+
+    [Header("아이템")]
+    [SerializeField] GameObject Key;
+    [SerializeField] GameObject Seed;
+    [SerializeField] GameObject Ladder;
+    [SerializeField] GameObject WoodPlank;
+    [SerializeField] GameObject Beanstalk; //콩나무
+
+    [SerializeField] Animation DoorAnim;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        isKey = false;
+        isSeed = false;
+        isLadder = false;
+        isWoodPlank = false;
+        isDoor = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    //플레이어가 키를 먹었을 때
+    public void OnKey()
+    {
+        isKey = true;
+        StartCoroutine("IEOpenDoor");
+    }
+    //문에 충돌했을 때
+    IEnumerator IEOpenDoor()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (isKey == true)
+        {
+            //문이 열림
+
+            isDoor = true;
+        }
+       
+    }
+    //나무판자와 충돌했을때
+    public void OnWoodPlank()
+    {
+        if (isKey == true && isDoor == true)
+        {
+            isWoodPlank = true;
+        }
+    }
+
+    //씨앗에 충돌했을 때
+    public void OnSeed()
+    {
+        if (isWoodPlank == true)
+        {
+            isSeed = true;
+        }
+    }
+
+    //밭에 씨앗 심기
+    //콩나무 나오기
+    IEnumerator IEOnPlant()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Beanstalk.SetActive(true);
+    }
+
+   
+
+
 }
