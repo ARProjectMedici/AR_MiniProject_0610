@@ -33,6 +33,7 @@ public class ItemManager : MonoBehaviour
     public GameObject WoodPlankPutOff; //나중에 생기는 나무판자
     public GameObject Door;
     public GameObject WoodPlankArrow;
+    public GameObject BeanstalkArea;
     
 
     // Start is called before the first frame update

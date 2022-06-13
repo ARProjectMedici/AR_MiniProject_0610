@@ -6,6 +6,7 @@ public class PalyerMove : MonoBehaviour
 {
     public float m_fSpeed = 5.0f;
     Vector3 m_vecTarget;
+   
     void Start()
     {
         m_vecTarget = transform.position;
@@ -21,9 +22,11 @@ public class PalyerMove : MonoBehaviour
             {
                 m_vecTarget = hit.point;
                 m_vecTarget.y = transform.position.y;
+               
             }
         }
         transform.position = Vector3.MoveTowards(transform.position, m_vecTarget, m_fSpeed * Time.deltaTime);
+     
     }
 }
 

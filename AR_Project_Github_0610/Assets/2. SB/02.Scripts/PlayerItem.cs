@@ -68,13 +68,14 @@ public class PlayerItem : MonoBehaviour
             collision.gameObject.SetActive(false);
 
         }
-        else if (collision.gameObject.CompareTag("Beanstalk"))
+        else if (collision.gameObject.CompareTag("BeanstalkArea"))
         {
 
             if (ItemManager.instance.isSeed == true)
             {
-                ItemManager.instance.Beanstalk.GetComponentInChildren<ParticleSystem>().Play();
-                ItemManager.instance.Beanstalk.SetActive(true); 
+                ItemManager.instance.Beanstalk.SetActive(true);
+                ItemManager.instance.BeanstalkArea.GetComponentInChildren<ParticleSystem>().Play();
+                ItemManager.instance.Beanstalk.GetComponent<Animator>().SetTrigger("Beanstalk");
             
             }
         }
