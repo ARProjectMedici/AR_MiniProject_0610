@@ -9,6 +9,9 @@ TagManager:
   - Ladder
   - WoodPlank
   - Door
+  - WoodPlankArea
+  - Missile
+  - BeanstalkArea
   layers:
   - Default
   - TransparentFX
