@@ -9624,6 +9624,7 @@ GameObject:
   - component: {fileID: 1984172228}
   - component: {fileID: 1984172227}
   - component: {fileID: 1984172226}
+  - component: {fileID: 1984172230}
   m_Layer: 0
   m_Name: SM_WaterWheel_01
   m_TagString: Untagged
@@ -9708,6 +9709,25 @@ Transform:
   m_Father: {fileID: 547810534}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1984172230
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984172225}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8a9f71be5d919c8469799bd36b8eba8a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1986504533
 GameObject:
   m_ObjectHideFlags: 0
@@ -10889,6 +10909,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3569596646499437237, guid: 8a4dd065ee879224bada43b19ad3f851, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206788403022295346, guid: 8a4dd065ee879224bada43b19ad3f851, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
