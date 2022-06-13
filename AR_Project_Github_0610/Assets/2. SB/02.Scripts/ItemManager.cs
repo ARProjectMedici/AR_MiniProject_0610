@@ -34,7 +34,13 @@ public class ItemManager : MonoBehaviour
     public GameObject Door;
     public GameObject WoodPlankArrow;
     public GameObject BeanstalkArea;
-    
+    public GameObject OpenDoor;
+    public GameObject WoodPlankArea;
+
+    //새로운 나무판자길에 생기는 파티클효과
+    public GameObject WoodPlankPutOffEFX;
+
+    public bool isWoodEFX;
 
     // Start is called before the first frame update
     void Start()

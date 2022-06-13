@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerItem : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    
+
     void Start()
     {
         float h = Input.GetAxis("Horizontal");
@@ -25,8 +28,7 @@ public class PlayerItem : MonoBehaviour
         if (collision.gameObject.CompareTag("Key"))
         {
             Debug.Log("키와 충돌");
-            ItemManager.instance.isKey = true;
-            StartCoroutine("IEOpenDoor");
+            ItemManager.instance.isKey = true;         
             collision.gameObject.SetActive(false);
         }
         else if (collision.gameObject.CompareTag("Door"))
@@ -34,9 +36,15 @@ public class PlayerItem : MonoBehaviour
             if (ItemManager.instance.isKey == true)
             {
                 //키가 있는 상태에서 문이랑 충돌했을 때
+                ItemManager.instance.isDoor = true;
 
                 Debug.Log("문이랑 충돌");
                 ItemManager.instance.Door.GetComponent<Animator>().SetTrigger("OpenDoor");
+                ItemManager.instance.Door.GetComponent<Animator>().enabled = false;
+                ItemManager.instance.Door.GetComponent<Transform>().position = new Vector3(-4.33f, 1.22f, 9.47f);
+                ItemManager.instance.Door.transform.Rotate(0f, -117.666f, 0f);
+               Debug.Log("OpenDoor");
+                ItemManager.instance.OpenDoor.GetComponent<BoxCollider>().isTrigger = true;
             }
 
         }
@@ -56,10 +64,21 @@ public class PlayerItem : MonoBehaviour
 
             if (ItemManager.instance.isWoodPlank == true)
             {
-                ItemManager.instance.WoodPlankArrow.SetActive(false);
-                ItemManager.instance.WoodPlankPutOff.GetComponentInChildren<ParticleSystem>().Play();
-                ItemManager.instance.WoodPlankPutOff.SetActive(true);
+                if (ItemManager.instance.isWoodEFX == false)
+                {
+                    ItemManager.instance.WoodPlankArrow.SetActive(false);
+                    ItemManager.instance.WoodPlankPutOff.GetComponentInChildren<ParticleSystem>().Play();
+
+                    ItemManager.instance.WoodPlankPutOff.SetActive(true);
+                    ItemManager.instance.WoodPlankArea.GetComponent<BoxCollider>().isTrigger = true;
+                    ItemManager.instance.isWoodEFX = true;
+                }
+                else if (ItemManager.instance.isWoodEFX == true)
+                {
+                    ItemManager.instance.WoodPlankPutOff.GetComponentInChildren<ParticleSystem>().Stop();
+                }
             }
+            
         }
         else if (collision.gameObject.CompareTag("Seed"))
         {
