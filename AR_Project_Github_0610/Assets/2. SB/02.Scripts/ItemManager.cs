@@ -20,28 +20,32 @@ public class ItemManager : MonoBehaviour
 
     public bool isKey;    //열쇠를 먹었는가
     public bool isSeed;   //씨앗을 먹었는가
-    public bool isLadder; //사다리
+    //public bool isLadder; //사다리
     public bool isWoodPlank; //나무판자를 잡았는가
     public bool isDoor;    //문을 열었는가
 
     [Header("아이템")]
     [SerializeField] GameObject Key;
     [SerializeField] GameObject Seed;
-    [SerializeField] GameObject Ladder;
+    //[SerializeField] GameObject Ladder;
     [SerializeField] GameObject WoodPlank;
-    [SerializeField] GameObject Beanstalk; //콩나무
-
-    [SerializeField] Animation DoorAnim;
-
+    public GameObject Beanstalk; //콩나무
+    public GameObject WoodPlankPutOff; //나중에 생기는 나무판자
+    public GameObject Door;
+    public GameObject WoodPlankArrow;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         isKey = false;
         isSeed = false;
-        isLadder = false;
+        //isLadder = false;
         isWoodPlank = false;
         isDoor = false;
+        WoodPlankPutOff.SetActive(false);
+        Beanstalk.SetActive(false);
+        WoodPlankArrow.SetActive(false);
     }
 
     // Update is called once per frame
