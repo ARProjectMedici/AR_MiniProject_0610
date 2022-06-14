@@ -30,6 +30,7 @@ public class PlayerItem : MonoBehaviour
             Debug.Log("Å°¿Í Ãæµ¹");
             ItemManager.instance.isKey = true;         
             collision.gameObject.SetActive(false);
+            ItemManager.instance.DoorArrow.SetActive(true);
         }
         else if (collision.gameObject.CompareTag("Door"))
         {
@@ -39,12 +40,15 @@ public class PlayerItem : MonoBehaviour
                 ItemManager.instance.isDoor = true;
 
                 Debug.Log("¹®ÀÌ¶û Ãæµ¹");
+                ItemManager.instance.DoorArrow.SetActive(false);
+
                 ItemManager.instance.Door.GetComponent<Animator>().SetTrigger("OpenDoor");
                 ItemManager.instance.Door.GetComponent<Animator>().enabled = false;
                 ItemManager.instance.Door.GetComponent<Transform>().position = new Vector3(-4.33f, 1.22f, 9.47f);
                 ItemManager.instance.Door.transform.Rotate(0f, -117.666f, 0f);
                Debug.Log("OpenDoor");
                 ItemManager.instance.OpenDoor.GetComponent<BoxCollider>().isTrigger = true;
+                ItemManager.instance.OpenDoor.SetActive(false);
             }
 
         }
@@ -85,6 +89,8 @@ public class PlayerItem : MonoBehaviour
             Debug.Log("¾¾¾ÑÀÌ¶û Ãæµ¹");
             ItemManager.instance.isSeed = true;
             collision.gameObject.SetActive(false);
+            ItemManager.instance.TextSeed.SetActive(true);
+            ItemManager.instance.TextCameraAround.SetActive(false);
 
         }
         else if (collision.gameObject.CompareTag("BeanstalkArea"))
@@ -93,6 +99,7 @@ public class PlayerItem : MonoBehaviour
             if (ItemManager.instance.isSeed == true)
             {
                 ItemManager.instance.Beanstalk.SetActive(true);
+                CameraShake.instacne.Shake();
                 ItemManager.instance.BeanstalkArea.GetComponentInChildren<ParticleSystem>().Play();
                 ItemManager.instance.Beanstalk.GetComponent<Animator>().SetTrigger("Beanstalk");
             

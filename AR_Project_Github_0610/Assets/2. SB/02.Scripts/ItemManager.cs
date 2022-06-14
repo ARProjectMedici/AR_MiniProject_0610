@@ -32,7 +32,11 @@ public class ItemManager : MonoBehaviour
     public GameObject Beanstalk; //콩나무
     public GameObject WoodPlankPutOff; //나중에 생기는 나무판자
     public GameObject Door;
+
+    //다음 위치로 가라고 표시해주는 화살표
     public GameObject WoodPlankArrow;
+    public GameObject DoorArrow;
+
     public GameObject BeanstalkArea;
     public GameObject OpenDoor;
     public GameObject WoodPlankArea;
@@ -41,6 +45,10 @@ public class ItemManager : MonoBehaviour
     public GameObject WoodPlankPutOffEFX;
 
     public bool isWoodEFX;
+
+    [Header("UI")]
+    public GameObject TextSeed;
+    public GameObject TextCameraAround;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +61,8 @@ public class ItemManager : MonoBehaviour
         WoodPlankPutOff.SetActive(false);
         Beanstalk.SetActive(false);
         WoodPlankArrow.SetActive(false);
+        TextSeed.SetActive(false);
+        TextCameraAround.SetActive(true);
     }
 
     // Update is called once per frame
